@@ -33,6 +33,14 @@ class Api::V1::MerchantsController < ApplicationController
     render json: Merchant.where(find_params)
   end
 
+  def items
+    render json: find_merchant.items
+  end
+
+  def invoices
+    render json: find_merchant.invoices
+  end
+
   private
 
   def merchant_params
@@ -42,4 +50,9 @@ class Api::V1::MerchantsController < ApplicationController
   def find_params
     params.permit(:id, :name, :created_at, :updated_at)
   end
+
+  def find_merchant
+    Merchant.find_by(id: params[:merchant_id])
+  end
+
 end
