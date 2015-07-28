@@ -33,6 +33,14 @@ class Api::V1::ItemsController < ApplicationController
     render json: Item.where(find_params)
   end
 
+  def merchant
+    render json: find_item.merchant
+  end
+
+  def invoice_items
+    render json: find_item.invoice_items
+  end
+
   private
 
   def item_params

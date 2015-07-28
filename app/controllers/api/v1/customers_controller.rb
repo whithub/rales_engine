@@ -36,7 +36,13 @@ class Api::V1::CustomersController < ApplicationController
     render json: Customer.where(find_params)
   end
 
+  def invoices
+    render json: find_customer.invoices
+  end
 
+  def transactions
+    render json: find_customer.transactions
+  end
 
   private
 
