@@ -41,6 +41,19 @@ class Api::V1::MerchantsController < ApplicationController
     render json: find_merchant.invoices
   end
 
+  def revenue
+    render json: find_merchant.revenue
+  end
+
+  def revenue_by_date
+    render json: find_merchant.revenue_by_date
+  end
+
+  def fav_customer
+    render json: find_merchant.fav_customer
+  end
+
+
   private
 
   def merchant_params

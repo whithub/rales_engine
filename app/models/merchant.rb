@@ -7,8 +7,13 @@ class Merchant < ActiveRecord::Base
 
 
   def revenue
-    Merchant.invoice_item.reduce(0) do |sum, inv_item|
-      (sum + (inv_item.unit_price / 100.00) * inv_item.quantity)
-    end
+    invoices.successful.joins(:invoice_items).sum('quantity * unit_price')
   end
+  
+
+  def fav_customer
+    invoices.successful.select('invoices.customer_id').group(:customer_id).count.sort_by { |k, v| v }.reverse.first
+  end
+
 end
+

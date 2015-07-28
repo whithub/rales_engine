@@ -7,8 +7,10 @@ Rails.application.routes.draw do
       get '/merchants/find',     to: "merchants#search"
       get '/merchants/find_all', to: "merchants#search_all"
       resources :merchants, except: [:new, :update] do
-        get 'items',    to: 'merchants#items'
-        get 'invoices', to: 'merchants#invoices'
+        get '/items',    to: 'merchants#items'
+        get '/invoices', to: 'merchants#invoices'
+        get '/revenue',  to: 'merchants#revenue'
+        get '/favorite_customer', to: 'merchants#fav_customer'
       end
 
       get '/customers/random',   to: "customers#random"
