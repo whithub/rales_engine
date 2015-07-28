@@ -36,6 +36,8 @@ class Api::V1::CustomersController < ApplicationController
     render json: Customer.where(find_params)
   end
 
+
+
   private
 
   def customer_params
@@ -44,6 +46,10 @@ class Api::V1::CustomersController < ApplicationController
 
   def find_params
     params.permit(:id, :first_name, :last_name, :created_at, :updated_at)
+  end
+
+  def find_customer
+    Customer.find_by(id: params[:customer_id])
   end
 
 end

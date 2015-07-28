@@ -49,4 +49,8 @@ class Api::V1::TransactionsController < ApplicationController
                   :created_at, :updated_at
     )
   end
+
+  def find_transaction
+    Transaction.find_by(id: params[:transaction_id])
+  end
 end

@@ -42,4 +42,8 @@ class Api::V1::InvoicesController < ApplicationController
   def find_params
     params.permit(:id, :status, :customer_id, :merchant_id, :created_at, :updated_at)
   end
+
+  def find_invoice
+    Invoice.find_by(id: params[:invoice_id])
+  end
 end
