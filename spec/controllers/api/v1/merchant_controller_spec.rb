@@ -46,6 +46,5 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
     end
   end
 
-  context ""
 end
 
