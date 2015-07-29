@@ -42,15 +42,19 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def revenue
-    render json: find_merchant.revenue
+    render json: find_merchant.revenue(params)
   end
 
-  def revenue_by_date
-    render json: find_merchant.revenue_by_date
+  def most_revenue
+    render json: Merchant.most_revenue(params[:quantity].to_i)
   end
 
   def fav_customer
     render json: find_merchant.fav_customer
+  end
+
+  def customers_with_pending_invoices
+    render json: find_merchant.customers_with_pending_invoices
   end
 
 

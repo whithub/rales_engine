@@ -3,22 +3,30 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      get '/merchants/random',   to: "merchants#random"
-      get '/merchants/find',     to: "merchants#search"
-      get '/merchants/find_all', to: "merchants#search_all"
+
       resources :merchants, except: [:new, :update] do
-        get '/items',    to: 'merchants#items'
-        get '/invoices', to: 'merchants#invoices'
-        get '/revenue',  to: 'merchants#revenue'
-        get '/favorite_customer', to: 'merchants#fav_customer'
+        member do
+          get '/items',    to: 'merchants#items'
+          get '/invoices', to: 'merchants#invoices'
+          get '/revenue',  to: 'merchants#revenue'
+          get '/favorite_customer', to: 'merchants#fav_customer'
+          get '/customers_with_pending_invoices', to: 'merchants#customers_with_pending_invoices'
+        end
+        collection do
+          get '/random',   to: "merchants#random"
+          get '/find',     to: "merchants#search"
+          get '/find_all', to: "merchants#search_all"
+          get '/most_revenue', to: 'merchants#most_revenue'
+        end
+
       end
 
       get '/customers/random',   to: "customers#random"
       get '/customers/find',     to: "customers#search"
       get '/customers/find_all', to: "customers#search_all"
       resources :customers, except: [:new, :update] do
-        get 'invoices',     to: 'customers#invoices'
-        get 'transactions', to: 'customers#transactions'
+        get '/invoices',     to: 'customers#invoices'
+        get '/transactions', to: 'customers#transactions'
 
       end
 
@@ -45,8 +53,8 @@ Rails.application.routes.draw do
       get '/items/find',     to: "items#search"
       get '/items/find_all', to: "items#search_all"
       resources :items, except: [:new, :update] do
-        get 'merchant',      to: 'items#merchant'
-        get 'invoice_items', to: 'items#invoice_items'
+        get '/merchant',      to: 'items#merchant'
+        get '/invoice_items', to: 'items#invoice_items'
       end
 
       get '/transactions/random',   to: "transactions#random"
