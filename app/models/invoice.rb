@@ -5,6 +5,10 @@ class Invoice < ActiveRecord::Base
   has_many :items, through: :invoice_items
   has_many :transactions
 
+  validates :status,      presence: true
+  validates :merchant_id, presence: true
+  validates :customer_id, presence: true
+
   scope :total_revenue, -> {
     successful.joins(:invoice_items).sum('quantity * unit_price')
   }

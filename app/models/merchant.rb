@@ -5,6 +5,8 @@ class Merchant < ActiveRecord::Base
   has_many :customers,     through: :invoices
   has_many :transactions,  through: :invoices
 
+  validates :name, presence: true
+
   def revenue(params)
     if params[:date]
       calc_revenue_by_date(DateTime.parse(params[:date]))

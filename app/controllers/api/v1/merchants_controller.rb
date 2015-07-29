@@ -34,7 +34,7 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def items
-    render json: find_merchant.items
+    respond_with find_merchant
   end
 
   def invoices
@@ -69,7 +69,7 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def find_merchant
-    Merchant.find_by(id: params[:merchant_id])
+    Merchant.find_by(id: params[:id])
   end
 
 end

@@ -4,6 +4,9 @@ class Customer < ActiveRecord::Base
   has_many :transactions,  through: :invoices
   has_many :merchants,     through: :invoices
 
+  validates :first_name, presence: true
+  validates :last_name,  presence: true
+
   def search
     @customers = Customer.all
     @customers = @customers.by_first_name(params[:first_name]) if params[:first_name].present?
