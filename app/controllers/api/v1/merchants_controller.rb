@@ -9,18 +9,6 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.find_by(id: params[:id])
   end
 
-  def create
-    respond_with Merchant.create(merchant_params)
-  end
-
-  def update
-    respond_with Merchant.update(params[:id], merchant_params)
-  end
-
-  def destroy
-    respond_with Merchant.destroy(params[:id])
-  end
-
   def random
     render json: Merchant.all.sample
   end

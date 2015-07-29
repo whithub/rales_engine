@@ -11,18 +11,6 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.find_by(id: params[:id])
   end
 
-  def create
-    respond_with Customer.create(customer_params)
-  end
-
-  def update
-    respond_with Customer.update(params[:id], customer_params)
-  end
-
-  def destroy
-    respond_with Customer.destroy(params[:id])
-  end
-
   def random
     render json: Customer.all.sample
     # respond_with Customer.all.sample
