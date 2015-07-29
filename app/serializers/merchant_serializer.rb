@@ -3,5 +3,4 @@ class MerchantSerializer < ActiveModel::Serializer
   root false
   has_many :items
 
-
 end

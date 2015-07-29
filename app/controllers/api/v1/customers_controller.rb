@@ -1,7 +1,5 @@
 class Api::V1::CustomersController < ApplicationController
-  respond_to :json, :xml
-  # scope :by_first_name, lambda { |first_name| where(first_name: first_name)}
-  # scope :by_last_name, lambda  { |last_name|  where(last_name:  last_name)}
+  respond_to :json
 
   def index
     respond_with Customer.all
