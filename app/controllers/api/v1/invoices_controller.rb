@@ -25,11 +25,11 @@ class Api::V1::InvoicesController < ApplicationController
     render json: Invoice.all.sample
   end
 
-  def search
+  def find
     render json: Invoice.find_by(find_params)
   end
 
-  def search_all
+  def find_all
     render json: Invoice.where(find_params)
   end
 

@@ -28,11 +28,11 @@ class Api::V1::CustomersController < ApplicationController
     # respond_with Customer.all.sample
   end
 
-  def search
+  def find
     render json: Customer.find_by(find_params)
   end
 
-  def search_all
+  def find_all
     render json: Customer.where(find_params)
   end
 

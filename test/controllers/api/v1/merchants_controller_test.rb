@@ -3,6 +3,7 @@ require 'test_helper'
 class Api::V1::MerchantsControllerTest < ActionController::TestCase
 
   test "it can find a single merchant" do
+    skip
     merchant_1 = Merchant.create!(id: 1, name: "Target")
     merchant_2 = Merchant.create!(id: 2, name: "Bed, Bath, & Beyond")
 
@@ -12,6 +13,8 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it can find all merchants with a same attribute" do
+    skip
+
     merchant_1 = Merchant.create!(id: 1, name: "Target")
     merchant_2 = Merchant.create!(id: 2, name: "Bed, Bath, & Beyond")
     merchant_3 = Merchant.create!(id: 3, name: "Target")
@@ -23,6 +26,8 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "can find items a merchant sells" do
+    skip
+
     merchant = Merchant.create!(id: 1, name: "Target")
     item_1 = Item.create!(name: "T-Shirt", description: "100% Cotton", unit_price: 11, merchant_id: merchant.id)
     item_2 = Item.create!(name: "Toy", description: "Stuffed Animal", unit_price: 9, merchant_id: merchant.id)
@@ -32,6 +37,8 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "find invoices associated with this merchant" do
+    skip
+
     merchant = Merchant.create!(id: 1, name: "Target")
     customer_1 = Customer.create!(id: 1, first_name: "Whitney", last_name: "Houston")
     customer_2 = Customer.create!(id: 2, first_name: "Tom", last_name: "Petty")
@@ -43,6 +50,8 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "it can find total_revenue and revenue_by_date for a merchant" do
+    skip
+
     merchant = Merchant.create!(id: 1, name: "Target")
     customer_1 = Customer.create!(id: 1, first_name: "Whitney", last_name: "Houston")
     customer_2 = Customer.create!(id: 2, first_name: "Tom", last_name: "Petty")

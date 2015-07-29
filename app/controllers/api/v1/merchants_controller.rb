@@ -1,5 +1,5 @@
 class Api::V1::MerchantsController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json
 
   def index
     respond_with Merchant.all
@@ -25,11 +25,11 @@ class Api::V1::MerchantsController < ApplicationController
     render json: Merchant.all.sample
   end
 
-  def search
+  def find
     render json: Merchant.find_by(find_params)
   end
 
-  def search_all
+  def find_all
     render json: Merchant.where(find_params)
   end
 

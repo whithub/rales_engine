@@ -25,11 +25,11 @@ class Api::V1::ItemsController < ApplicationController
     render json: Item.all.sample
   end
 
-  def search
+  def find
     render json: Item.find_by(find_params)
   end
 
-  def search_all
+  def find_all
     render json: Item.where(find_params)
   end
 

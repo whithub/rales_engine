@@ -25,11 +25,11 @@ class Api::V1::TransactionsController < ApplicationController
     render json: Transaction.all.sample
   end
 
-  def search
+  def find
     render json: Transaction.find_by(find_params)
   end
 
-  def search_all
+  def find_all
     render json: Transaction.where(find_params)
   end
 
