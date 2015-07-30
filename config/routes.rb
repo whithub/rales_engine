@@ -25,17 +25,20 @@ Rails.application.routes.draw do
           get '/transactions', to: 'customers#transactions'
         end
         collection do
-          get '/customers/random',   to: "customers#random"
-          get '/customers/find',     to: "customers#find"
-          get '/customers/find_all', to: "customers#find_all"
+          get 'random',    to: "customers#random"
+          get '/find',     to: "customers#find"
+          get '/find_all', to: "customers#find_all"
         end
 
       end
 
-      get '/invoices/random',   to: "invoices#random"
-      get '/invoices/find',     to: "invoices#find"
-      get '/invoices/find_all', to: "invoices#find_all"
+
       resources :invoices,      only: [:index, :show] do
+        collection do
+          get '/random',   to: "invoices#random"
+          get '/find',     to: "invoices#find"
+          get '/find_all', to: "invoices#find_all"
+        end
         get '/customer',      to: 'invoices#customer'
         get '/merchant',      to: 'invoices#merchant'
         get '/items',         to: 'invoices#items'
@@ -43,26 +46,33 @@ Rails.application.routes.draw do
         get '/transactions',  to: 'invoices#transactions'
       end
 
-      get '/invoice_items/random',   to: "invoice_items#random"
-      get '/invoice_items/find',     to: "invoice_items#find"
-      get '/invoice_items/find_all', to: "invoice_items#find_all"
       resources :invoice_items, only: [:index, :show] do
+        collection do
+          get '/random',   to: "invoice_items#random"
+          get '/find',     to: "invoice_items#find"
+          get '/find_all', to: "invoice_items#find_all"
+        end
         get '/item',    to: 'invoice_items#item'
         get '/invoice', to: 'invoice_items#invoice'
+
       end
 
-      get '/items/random',   to: "items#random"
-      get '/items/find',     to: "items#find"
-      get '/items/find_all', to: "items#find_all"
       resources :items, only: [:index, :show] do
+        collection do
+          get '/random',   to: "items#random"
+          get '/find',     to: "items#find"
+          get '/find_all', to: "items#find_all"
+        end
         get '/merchant',      to: 'items#merchant'
         get '/invoice_items', to: 'items#invoice_items'
       end
 
-      get '/transactions/random',   to: "transactions#random"
-      get '/transactions/find',     to: "transactions#find"
-      get '/transactions/find_all', to: "transactions#find_all"
       resources :transactions, only: [:index, :show] do
+        collection do
+          get '/random',   to: "transactions#random"
+          get '/find',     to: "transactions#find"
+          get '/find_all', to: "transactions#find_all"
+        end
         get '/invoice', to: 'transactions#invoice'
       end
 

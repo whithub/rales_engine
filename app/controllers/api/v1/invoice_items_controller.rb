@@ -2,35 +2,23 @@ class Api::V1::InvoiceItemsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with InvoiceItems.all
+    respond_with InvoiceItem.all
   end
 
   def show
-    respond_with InvoiceItems.find_by(id: params[:id])
-  end
-
-  def create
-    respond_with InvoiceItems.create(invoice_item_params)
-  end
-
-  def update
-    respond_with InvoiceItems.update(params[:id], invoice_item_params)
-  end
-
-  def destroy
-    respond_with InvoiceItems.destroy(params[:id])
+    respond_with InvoiceItem.find_by(id: params[:id])
   end
 
   def random
-    render json: InvoiceItems.all.sample
+    render json: InvoiceItem.all.sample
   end
 
   def find
-    render json: InvoiceItems.find_by(find_params)
+    render json: InvoiceItem.find_by(find_params)
   end
 
   def find_all
-    render json: InvoiceItems.where(find_params)
+    render json: InvoiceItem.where(find_params)
   end
 
   def item
@@ -52,6 +40,6 @@ class Api::V1::InvoiceItemsController < ApplicationController
   end
 
   def find_invoice_item
-    InvoiceItem.find_by(id: params[:invoice_item_id])
+    InvoiceItems.find_by(id: params[:invoice_item_id])
   end
 end
