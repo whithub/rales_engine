@@ -31,7 +31,7 @@ gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
- gem 'active_model_serializers'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'pry-rails'

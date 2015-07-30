@@ -27,14 +27,13 @@ class Merchant < ActiveRecord::Base
     all.sort_by { |merchant| merchant.invoices.total_revenue }.last(quantity)
   end
 
-
   def fav_customer
     customers.max_by { |c| c.invoices.successful.where(merchant_id: id).count }
     # invoices.successful.select('invoices.customer_id').group(:customer_id).count.sort_by { |k, v| v }.reverse.first
   end
 
   def customers_with_pending_invoices
-    pending_inv = invoices.pending
+    pending_inv = invoices - invoices.successful
     pending_inv.map { |invoice| invoice.customer}
   end
 

@@ -45,7 +45,6 @@ class Api::V1::MerchantsController < ApplicationController
     render json: find_merchant.customers_with_pending_invoices
   end
 
-
   private
 
   def merchant_params

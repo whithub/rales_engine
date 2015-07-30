@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :item do
-    name "Toy"
-    description "stuffed animal"
-    unit_price 3
+    name "Legos"
+    description "amazing fucking building blocks"
+    unit_price 7
     merchant
   end
 end
