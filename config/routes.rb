@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root '/'
+
   namespace :api, defaults: { format: :json} do
     namespace :v1 do
       resources :merchants, only: [:index, :show] do
