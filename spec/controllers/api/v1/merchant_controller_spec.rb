@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::MerchantsController, type: :controller do
 
   context "#index" do
-    it "returns all the merchants" do
+    it "returns all merchants" do
       merchant_1 = create(:merchant, name: 'Target Store')
       merchant_2 = create(:merchant, name: 'Staples')
 
@@ -19,7 +19,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
   end
 
   context "#show" do
-    it "returns the specific merchant" do
+    it "returns a single merchant" do
       merchant = create(:merchant, name: 'Target Store')
 
       get :show, id: merchant.id, format: :json
@@ -51,7 +51,7 @@ RSpec.describe Api::V1::MerchantsController, type: :controller do
   end
 
   context "revenue" do
-    it "returns total_revenue for that merchant" do
+    xit "returns total_revenue for that merchant" do
       merchant     = create(:merchant, name: "Target")
       customer     = create(:customer, first_name: "Billy", last_name: "Joel")
       item         = create(:item, name: 'hula hoop', description: 'endless hoop of fun', unit_price: 4, merchant: merchant)

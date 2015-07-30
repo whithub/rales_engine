@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "TransactionController" do
+RSpec.describe Api::V1::TransactionsController, type: :controller do
   context '#index' do
     it 'returns all the transactions' do
-      merchant    = create(name: 'Target')
-      customer    = create(first_name: 'Tom', last_name: 'Petty')
-      invoice     = create(status: 'shipped', customer: customer, merchant: merchant)
-      transaction = create(credit_card_number: '4242424242424242',
+      merchant    = create(:merchant, name: 'Target')
+      customer    = create(:customer, first_name: 'Tom', last_name: 'Petty')
+      invoice     = create(:invoice, status: 'shipped', customer: customer, merchant: merchant)
+      transaction = create(:transaction, credit_card_number: '4242424242424242',
                             result: 'success', invoice: invoice)
 
       get :index, format: :json
@@ -15,18 +15,18 @@ describe "TransactionController" do
       transactions = JSON.parse(response.body)
       expect(transactions.count).to eq(1)
 
-      transaction = transactions.first
+      transaction = transactions['transactions'].first
       expect(transaction['result']).to eq('success')
     end
   end
 
   context '#show' do
     it 'returns a single transaction' do
-      merchant    = create(name: 'Target')
-      customer    = create(first_name: 'Tom', last_name: 'Petty')
-      invoice     = create(status: 'shipped', customer: customer, merchant: merchant)
-      transaction = create(credit_card_number: '4242424242424242',
-                            result: 'success', invoice: invoice)
+      merchant    = create(:merchant, name: 'Target')
+      customer    = create(:customer, first_name: 'Tom', last_name: 'Petty')
+      invoice     = create(:invoice, status: 'shipped', customer: customer, merchant: merchant)
+      transaction = create(:transaction, credit_card_number: '4242424242424242',
+                           result: 'success', invoice: invoice)
 
       get :show, id: transaction.id, format: :json
 
